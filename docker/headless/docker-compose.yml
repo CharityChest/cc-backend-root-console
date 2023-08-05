@@ -2,14 +2,12 @@ version: '3'
 
 services:
   app-develop:
-    env_file:
-      - ../.go_configuration.env
     image: cc-backend/headless
     build:
       context: ../..
       dockerfile: ./docker/headless/Dockerfile
       args:
-        - GOLANG_VERSION=${CC_BACKEND_GOLANG_VERSION}
-        - ALPINE_VERSION=${CC_BACKEND_ALPINE_VERSION}
+        - GOLANG_VERSION=${CC_BACKEND_ROOT_CONSOLE_GOLANG_VERSION}
+        - ALPINE_VERSION=${CC_BACKEND_ROOT_CONSOLE_ALPINE_VERSION}
     volumes:
       - ../..:/code

@@ -1,4 +1,5 @@
-docker/
+docker/develop/Dockerfile
+docker/production/Dockerfile
 README.md
 .gitignore
 .idea
