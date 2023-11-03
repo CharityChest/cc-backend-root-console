@@ -1,13 +1,16 @@
 package main
 
-import "cc-backend-root-console/app/boot"
+import (
+	"cc-backend-root-console/app/boot/application/application/abstracts"
+	"cc-backend-root-console/app/boot/application/application/concrete"
+)
 
 func main() {
 	// Create an instance of the application
-	application := boot.BuildApplicationInstance()
+	app := concrete.App().(abstracts.Application)
 
 	// Boot the application
-	application.Boot()
+	app.Boot()
 
-	application.Listen()
+	app.Listen()
 }

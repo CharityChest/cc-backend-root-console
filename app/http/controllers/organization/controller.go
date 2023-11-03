@@ -1,7 +1,7 @@
 package organization
 
 import (
-	"cc-backend-root-console/app/controllers"
+	"cc-backend-root-console/app/http/controllers"
 	"github.com/gin-gonic/gin"
 )
 

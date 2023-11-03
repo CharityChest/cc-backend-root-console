@@ -2,7 +2,7 @@ package routes
 
 import (
 	"cc-backend-root-console/app/boot/application/route"
-	"cc-backend-root-console/app/controllers/organization"
+	"cc-backend-root-console/app/http/controllers/organization"
 )
 
 const ApiV1Prefix = "/api/v1/"

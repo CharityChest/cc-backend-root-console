@@ -29,6 +29,8 @@ type Route interface {
 	getHandler() *gin.HandlerFunc
 }
 
+const GroupInterfaceName = "cc-backend-root-console/app/boot/application/route" + ".Group"
+
 type Group interface {
 	GetRoutes() []Route
 }
