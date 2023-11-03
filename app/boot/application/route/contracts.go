@@ -1,6 +1,7 @@
 package route
 
 import (
+	"cc-backend-root-console/app/helpers/array"
 	"github.com/gin-gonic/gin"
 	"strings"
 )
@@ -25,7 +26,7 @@ type Path interface {
 type Route interface {
 	getMethod() Method
 	getPath() Path
-	getHandler() func(*gin.Context)
+	getHandler() *func(*gin.Context)
 }
 
 type Group interface {
@@ -41,7 +42,9 @@ func BuildRouterInstance(engine *gin.Engine) Router {
 }
 
 func BuildPathInstance(prefix string, relativePath string) Path {
-	return &PathInstance{prefix: strings.Split(prefix, "/"), path: relativePath}
+	return &PathInstance{prefix: array.FilterStrings(strings.Split(prefix, "/"), func(s string) bool {
+		return strings.Trim(s, " \n\t\r") != ""
+	}), path: strings.Trim(relativePath, "/")}
 }
 
 func BuildRouteInstance(method Method, path Path, handler *func(*gin.Context)) Route {

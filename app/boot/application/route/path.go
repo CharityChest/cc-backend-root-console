@@ -16,7 +16,7 @@ func (p *PathInstance) getRelativePath() string {
 }
 
 func (p *PathInstance) getFullPath() string {
-	return strings.Join(p.prefix, "/") + "/" + p.path
+	return "/" + strings.Join(p.prefix, "/") + "/" + p.path
 }
 
 func (p *PathInstance) isEqual(path Path) bool {

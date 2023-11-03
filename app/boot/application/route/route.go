@@ -16,6 +16,6 @@ func (r *RouteInstance) getPath() Path {
 	return r.path
 }
 
-func (r *RouteInstance) getHandler() func(*gin.Context) {
-	return *r.handler
+func (r *RouteInstance) getHandler() *func(*gin.Context) {
+	return r.handler
 }

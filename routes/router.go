@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"cc-backend-root-console/app/boot/route"
+	"cc-backend-root-console/app/boot/application/route"
 )
 
 type Group struct {
@@ -22,5 +22,5 @@ func BuildGroupInstance() *Group {
 	for _, r := range api {
 		group.AddRoute(r)
 	}
-	return &Group{}
+	return group
 }

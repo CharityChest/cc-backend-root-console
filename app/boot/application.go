@@ -1,7 +1,7 @@
 package boot
 
 import (
-	"cc-backend-root-console/app/boot/route"
+	"cc-backend-root-console/app/boot/application/route"
 	"cc-backend-root-console/routes"
 	"github.com/gin-gonic/gin"
 )
@@ -13,11 +13,20 @@ type App struct {
 
 func (app *App) Boot() {
 	app.engine = gin.Default()
+	app.setupRoutes()
 }
 
 func (app *App) setupRoutes() {
 	app.router = route.BuildRouterInstance(app.engine)
-	app.router.ApplyRoutes(app.BuildRouterGroup())
+	group := app.BuildRouterGroup()
+	app.router.ApplyRoutes(group)
+}
+
+func (app *App) Listen() {
+	err := app.engine.Run()
+	if err != nil {
+		panic(err)
+	}
 }
 
 func (app *App) BuildRouterGroup() route.Group {

@@ -8,4 +8,6 @@ func main() {
 
 	// Boot the application
 	application.Boot()
+
+	application.Listen()
 }

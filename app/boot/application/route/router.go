@@ -12,6 +12,6 @@ func (r *RouterInstance) ApplyRoutes(group Group) {
 		method := route.getMethod()
 		path := route.getPath().getFullPath()
 		handler := route.getHandler()
-		r.engine.Handle(string(method), path, handler)
+		r.engine.Handle(string(method), path, *handler)
 	}
 }
