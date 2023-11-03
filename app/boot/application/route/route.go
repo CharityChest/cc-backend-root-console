@@ -2,20 +2,20 @@ package route
 
 import "github.com/gin-gonic/gin"
 
-type RouteInstance struct {
+type routeInstance struct {
 	method  Method
 	path    Path
-	handler *func(*gin.Context)
+	handler *gin.HandlerFunc
 }
 
-func (r *RouteInstance) getMethod() Method {
+func (r *routeInstance) getMethod() Method {
 	return r.method
 }
 
-func (r *RouteInstance) getPath() Path {
+func (r *routeInstance) getPath() Path {
 	return r.path
 }
 
-func (r *RouteInstance) getHandler() *func(*gin.Context) {
+func (r *routeInstance) getHandler() *gin.HandlerFunc {
 	return r.handler
 }

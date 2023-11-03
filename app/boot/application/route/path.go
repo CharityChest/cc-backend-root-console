@@ -2,23 +2,23 @@ package route
 
 import "strings"
 
-type PathInstance struct {
+type pathInstance struct {
 	prefix []string
 	path   string
 }
 
-func (p *PathInstance) getPrefix() []string {
+func (p *pathInstance) getPrefix() []string {
 	return p.prefix
 }
 
-func (p *PathInstance) getRelativePath() string {
+func (p *pathInstance) getRelativePath() string {
 	return p.path
 }
 
-func (p *PathInstance) getFullPath() string {
+func (p *pathInstance) getFullPath() string {
 	return "/" + strings.Join(p.prefix, "/") + "/" + p.path
 }
 
-func (p *PathInstance) isEqual(path Path) bool {
+func (p *pathInstance) isEqual(path Path) bool {
 	return p.getFullPath() == path.getFullPath()
 }

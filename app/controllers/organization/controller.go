@@ -6,6 +6,7 @@ import (
 )
 
 type Controller struct {
+	counter int
 }
 
 func (c *Controller) getHandlers() []controllers.Handler {
@@ -17,9 +18,12 @@ func (c *Controller) getHandlers() []controllers.Handler {
 func (c *Controller) List(ctx *gin.Context) {
 	ctx.JSON(200, gin.H{
 		"message": "Hello World",
+		"counter": c.counter,
 	})
+
+	c.counter++
 }
 
 func BuildOrganizationController() *Controller {
-	return &Controller{}
+	return &Controller{counter: 0}
 }

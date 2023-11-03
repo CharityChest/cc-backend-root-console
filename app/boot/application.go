@@ -6,29 +6,29 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type App struct {
+type app struct {
 	engine *gin.Engine
 	router route.Router
 }
 
-func (app *App) Boot() {
+func (app *app) Boot() {
 	app.engine = gin.Default()
 	app.setupRoutes()
 }
 
-func (app *App) setupRoutes() {
+func (app *app) setupRoutes() {
 	app.router = route.BuildRouterInstance(app.engine)
 	group := app.BuildRouterGroup()
 	app.router.ApplyRoutes(group)
 }
 
-func (app *App) Listen() {
+func (app *app) Listen() {
 	err := app.engine.Run()
 	if err != nil {
 		panic(err)
 	}
 }
 
-func (app *App) BuildRouterGroup() route.Group {
+func (app *app) BuildRouterGroup() route.Group {
 	return routes.BuildGroupInstance()
 }

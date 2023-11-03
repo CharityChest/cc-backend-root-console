@@ -2,11 +2,11 @@ package route
 
 import "github.com/gin-gonic/gin"
 
-type RouterInstance struct {
+type routerInstance struct {
 	engine *gin.Engine
 }
 
-func (r *RouterInstance) ApplyRoutes(group Group) {
+func (r *routerInstance) ApplyRoutes(group Group) {
 	routes := group.GetRoutes()
 	for _, route := range routes {
 		method := route.getMethod()

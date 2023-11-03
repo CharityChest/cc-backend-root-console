@@ -11,5 +11,5 @@ type Application interface {
 }
 
 func BuildApplicationInstance() Application {
-	return &App{}
+	return &app{}
 }

@@ -26,7 +26,7 @@ type Path interface {
 type Route interface {
 	getMethod() Method
 	getPath() Path
-	getHandler() *func(*gin.Context)
+	getHandler() *gin.HandlerFunc
 }
 
 type Group interface {
@@ -38,15 +38,15 @@ type Router interface {
 }
 
 func BuildRouterInstance(engine *gin.Engine) Router {
-	return &RouterInstance{engine: engine}
+	return &routerInstance{engine: engine}
 }
 
 func BuildPathInstance(prefix string, relativePath string) Path {
-	return &PathInstance{prefix: array.FilterStrings(strings.Split(prefix, "/"), func(s string) bool {
+	return &pathInstance{prefix: array.FilterStrings(strings.Split(prefix, "/"), func(s string) bool {
 		return strings.Trim(s, " \n\t\r") != ""
 	}), path: strings.Trim(relativePath, "/")}
 }
 
-func BuildRouteInstance(method Method, path Path, handler func(*gin.Context)) Route {
-	return &RouteInstance{method: method, path: path, handler: &handler}
+func BuildRouteInstance(method Method, path Path, handler gin.HandlerFunc) Route {
+	return &routeInstance{method: method, path: path, handler: &handler}
 }
