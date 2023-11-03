@@ -47,6 +47,6 @@ func BuildPathInstance(prefix string, relativePath string) Path {
 	}), path: strings.Trim(relativePath, "/")}
 }
 
-func BuildRouteInstance(method Method, path Path, handler *func(*gin.Context)) Route {
-	return &RouteInstance{method: method, path: path, handler: handler}
+func BuildRouteInstance(method Method, path Path, handler func(*gin.Context)) Route {
+	return &RouteInstance{method: method, path: path, handler: &handler}
 }
